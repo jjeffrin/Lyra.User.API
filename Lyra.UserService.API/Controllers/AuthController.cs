@@ -106,6 +106,7 @@ namespace Lyra.UserService.API.Controllers
             catch (Exception ex)
             {
                 this._logger.LogError(ex.Message);
+                return StatusCode(500);
             }            
         }
     }
