@@ -21,9 +21,10 @@ builder.Services.AddCors(o => o.AddPolicy("LyraPolicy", builder =>
             builder.AllowAnyMethod()
             .AllowAnyHeader()
             .SetIsOriginAllowed((host) => 
-            { 
-                if (host.Equals("https://localhost:3000")) return true; 
-                return false;
+            {
+                //if (host.Equals("https://localhost:3000")) return true; 
+                //return false;
+                return true;
             })
             .AllowCredentials();
 }));
