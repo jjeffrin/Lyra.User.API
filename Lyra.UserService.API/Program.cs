@@ -28,6 +28,8 @@ builder.Services.AddCors(o => o.AddPolicy("LyraPolicy", builder =>
             .AllowCredentials();
 }));
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,7 +38,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.MapHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseCors("LyraPolicy");
 app.UseAuthorization();
