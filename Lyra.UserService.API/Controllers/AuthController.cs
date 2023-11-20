@@ -50,7 +50,7 @@ namespace Lyra.UserService.API.Controllers
         {
             try
             {
-                var user = await this._context.Users.FirstOrDefaultAsync(x => x.Email.Equals(request.Email));
+                var user = await this._context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
                 if (user == null) return NotFound("User not found");
                 if (!BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
                 {
