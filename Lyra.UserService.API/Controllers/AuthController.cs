@@ -87,7 +87,7 @@ namespace Lyra.UserService.API.Controllers
                     Secure = true,
                     HttpOnly = true,
                     Path = "/",
-                    Domain = ".lyra-f4269.web.app",
+                    Domain = ".azurewebsites.net",
                     Expires = DateTime.Now.AddDays(1)
                 });
 
@@ -97,7 +97,7 @@ namespace Lyra.UserService.API.Controllers
                     SameSite = SameSiteMode.None,
                     Secure = true,
                     Path = "/",
-                    Domain = ".lyra-f4269.web.app",
+                    Domain = ".azurewebsites.net",
                     Expires = DateTime.Now.AddDays(1)
                 });
 
