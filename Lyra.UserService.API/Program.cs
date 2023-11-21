@@ -16,17 +16,15 @@ builder.Services.AddDbContext<UserDbContext>(options =>
 });
 
 builder.Services.AddCors(o => o.AddPolicy("LyraPolicy", builder =>
-{
-    //builder.WithOrigins()
-            builder.AllowAnyMethod()
-            .AllowAnyHeader()
-            .SetIsOriginAllowed((host) => 
-            {
-                //if (host.Equals("https://localhost:3000")) return true; 
-                //return false;
-                return true;
-            })
-            .AllowCredentials();
+{    
+    builder.AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed((host) => 
+    {
+        if (host.Equals("https://lyra.jjeffr.in")) return true; 
+        return false;
+    })
+    .AllowCredentials();
 }));
 
 builder.Services.AddHealthChecks();
@@ -34,11 +32,12 @@ builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
+if (app.Environment.IsDevelopment())
+{
     app.UseSwagger();
     app.UseSwaggerUI();
-//}
+}
+
 app.MapHealthChecks("/health");
 app.UseHttpsRedirection();
 app.UseCors("LyraPolicy");
