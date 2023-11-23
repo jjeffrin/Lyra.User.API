@@ -114,7 +114,7 @@ namespace Lyra.UserService.API.Controllers
         [Route("GetTestValue")]
         public ActionResult<string> Get()
         {
-            var value = this._configuration.GetConnectionString("SQLAZURECONNSTR_AzureSQLDatabaseConnection");
+            var value = Environment.GetEnvironmentVariable("SQLAZURECONNSTR_AzureSQLDatabaseConnection");
             if (value != null)
             {
                 return value;
