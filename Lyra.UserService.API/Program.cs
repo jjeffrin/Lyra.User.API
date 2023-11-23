@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<UserDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSQLDatabaseConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SQLCONNSTR_AzureSQLDatabaseConnection"));
 });
 
 builder.Services.AddCors(o => o.AddPolicy("LyraPolicy", builder =>
