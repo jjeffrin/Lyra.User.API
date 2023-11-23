@@ -19,10 +19,9 @@ namespace Lyra.UserService.API.Controllers
         private readonly IConfiguration _configuration;
         private readonly ILogger<AuthController> _logger;
 
-        public AuthController(UserDbContext context, IConfiguration configuration, ILogger<AuthController> logger)
+        public AuthController(UserDbContext context, ILogger<AuthController> logger)
         {
             this._context = context;
-            this._configuration = configuration;
             this._logger = logger;
         }
 
