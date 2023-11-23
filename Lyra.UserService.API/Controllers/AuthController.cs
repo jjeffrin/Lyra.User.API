@@ -57,12 +57,12 @@ namespace Lyra.UserService.API.Controllers
                     return BadRequest("Incorrect Password");
                 }
                 var userClaims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.Email, user.Email)
-            };
+                {
+                    new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Email, user.Email)
+                };
 
-                var securityKey = this._configuration.GetSection("Keys:SecurityKey").Value;
+                var securityKey = Environment.GetEnvironmentVariable("SecurityKey");
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(securityKey!));
                 var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var token = new JwtSecurityToken(
@@ -76,7 +76,6 @@ namespace Lyra.UserService.API.Controllers
 
                 var response = new LoginResponse()
                 {
-                    //AccessToken = jwtToken,
                     UserId = user.Id,
                     Name = user.Name
                 };
