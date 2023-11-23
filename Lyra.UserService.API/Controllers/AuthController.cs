@@ -109,5 +109,17 @@ namespace Lyra.UserService.API.Controllers
                 return StatusCode(500);
             }            
         }
+
+        [HttpGet]
+        [Route("GetTestValue")]
+        public ActionResult<string> Get()
+        {
+            var value = this._configuration.GetConnectionString("SQLAZURECONNSTR_AzureSQLDatabaseConnection");
+            if (value != null)
+            {
+                return value;
+            }
+            return "Couldn't find the connection";
+        }
     }
 }
